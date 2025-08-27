@@ -1,0 +1,240 @@
+:root {
+  --bg: #18191c;
+  --fg: orange;
+  --primary: orange;
+  --secondary: #161718;
+  --accent: orange;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+}
+
+nav#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--secondary);
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+nav#navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0.7em 0;
+  list-style: none;
+}
+
+nav#navbar li {
+  margin: 0 1em;
+}
+
+nav#navbar a {
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav#navbar a:hover {
+  color: #fff;
+}
+
+#welcome-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary);
+  animation: popOut 0.7s ease;
+  /* pop-out stays after animation */
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+#welcome-section h1 {
+  font-size: 2.8em;
+  margin: 0.2em 0;
+  color: var(--primary);
+}
+
+.tagline {
+  font-size: 1.3em;
+  color: var(--fg);
+  margin-bottom: 0.5em;
+}
+
+section {
+  padding: 4em 10vw 3em 10vw;
+  margin: 0 auto 2em auto;
+  max-width: 800px;
+  background: var(--secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+}
+
+.skills {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.skills li {
+  background: var(--accent);
+  color: #18191c;
+  padding: 0.4em 1em;
+  border-radius: 20px;
+  font-size: 1em;
+  margin: 0.3em 0;
+}
+
+/* Pop-out animation for sections */
+.pop-out {
+  opacity: 0;
+  transform: scale(0.95) translateY(24px);
+  animation: popOut 0.7s ease forwards;
+  color: var(--fg);
+}
+
+.pop-out.stay {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  animation: popOut 0.7s ease forwards;
+}
+
+@keyframes popOut {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Projects section and tiles */
+#projects {
+  margin-top: 2em;
+}
+
+.project-tile {
+  background: #232429;
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+  box-shadow: 0 2px 16px rgba(255,140,0,0.07);
+  animation: popOut 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+  color: var(--fg);
+}
+
+.project-tile h3 {
+  color: var(--primary);
+  margin-top: 0;
+}
+
+.project-tile a {
+  color: var(--accent);
+  text-decoration: underline;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.project-preview {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 8px;
+  margin-bottom: 0.5em;
+  box-shadow: 0 2px 12px rgba(255,140,0,0.10);
+  transition: transform 0.3s;
+  background: #18191c;
+  border: 2px solid orange;
+  display: block;
+}
+
+.project-preview:hover {
+  transform: scale(1.06);
+}
+
+/* Contact section */
+.contact-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1.5em;
+  margin-bottom: 1em;
+}
+
+.contact-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contact-links a:hover {
+  color: #fff;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  max-width: 330px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+  padding: 0.7em;
+  border: none;
+  border-radius: 6px;
+  background: #232429;
+  color: var(--fg);
+  font-size: 1em;
+  resize: vertical;
+}
+
+.contact-form button {
+  background: var(--primary);
+  color: #18191c;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7em;
+  font-size: 1em;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 650px) {
+  section {
+    padding: 2em 4vw 1.5em 4vw;
+    max-width: 98vw;
+  }
+  nav#navbar ul {
+    flex-direction: column;
+    padding: 0.4em 0;
+  }
+  nav#navbar li {
+    margin: 0.3em 0;
+  }
+  #welcome-section h1 {
+    font-size: 2em;
+  }
+  .project-preview {
+    max-width: 100%;
+  }
+}
+
+/* Ensure navbar always stays on top */
+body {
+  padding-top: 3.5em;
+}
